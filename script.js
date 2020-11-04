@@ -4,8 +4,8 @@
 const apiKey = 'AIzaSyCohHo0AjT13qwjUXmdsGpIkFDfeSkrJj8'; 
 const youTubeURL = 'https://www.googleapis.com/youtube/v3/search';
 const youTubeWatch = 'https://www.youtube.com/watch';
-const libraryURL = 'http://openlibrary.org/subjects/';
-const coverImgURL = 'http://covers.openlibrary.org/b/id/';
+const libraryURL = 'https://openlibrary.org/subjects/';
+const coverImgURL = 'https://covers.openlibrary.org/b/id/';
 
 
 function formatQueryParams(params) {
