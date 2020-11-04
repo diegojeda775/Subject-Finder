@@ -29,12 +29,12 @@ function displayYouTubeResults(responseJson) {
         ab_channel: responseJson.items[i].snippet.channelTitle.replace(/\s/g, ''),
       };
     const queryString = formatQueryParams(params)
-    const url = youTubeWatch + '?' + queryString;
+    const cUrl = youTubeWatch + '?' + queryString;
 
     $('#y-results-list').append(
-      `<li><h3><a href="${url}" target=”_blank”>${responseJson.items[i].snippet.title}</a></h3>
+      `<li><h3><a href="${cUrl}" target=”_blank”>${responseJson.items[i].snippet.title}</a></h3>
       <p>${responseJson.items[i].snippet.description}</p>
-      <h3><a href="${url}" target=”_blank”><img src='${responseJson.items[i].snippet.thumbnails.medium.url}'></a>
+      <h3><a href="${cUrl}" target=”_blank”><img src='${responseJson.items[i].snippet.thumbnails.medium.url}'></a>
       </li>`
     )};
   //display the results section  
@@ -69,11 +69,11 @@ function getYouTubeVideos(query, maxResults=10) {
     type: 'video'
   };
   const queryString = formatQueryParams(params)
-  const url = youTubeURL + '?' + queryString;
+  const yUrl = youTubeURL + '?' + queryString;
 
-  console.log(url);
+  console.log(yUrl);
 
-  fetch(url)
+  fetch(yUrl)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -95,11 +95,11 @@ function getOpenLibraryBooks(query, maxResults=10) {
       has_fulltext: 'true'
     };
     const queryString = formatQueryParams(params)
-    const url = libraryURL + `${query}.json` + '?' + queryString;
+    const lUrl = libraryURL + `${query}.json` + '?' + queryString;
   
-    console.log(url);
+    console.log(lUrl);
   
-    fetch(url)
+    fetch(lUrl)
       .then(response => {
         if (response.ok) {
           return response.json();
