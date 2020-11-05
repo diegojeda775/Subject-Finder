@@ -1,7 +1,7 @@
 'use strict';
 
 // put your own value below!
-const apiKey = 'AIzaSyDLr95C8nSNvU--VK7CYkdt_9Pc_dsDfF0'; 
+const apiKey = 'AIzaSyBvUFAxtS34BpnhQQ1Wp1p_X3rOET4Dq_8'; 
 const youTubeURL = 'https://www.googleapis.com/youtube/v3/search';
 const youTubeWatch = 'https://www.youtube.com/watch';
 const libraryURL = 'https://openlibrary.org/subjects/';
@@ -115,7 +115,7 @@ function getOpenLibraryBooks(query, maxResults=10) {
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
-    const searchTerm = $('#js-search-term').val();
+    const searchTerm = $('#js-search-term').val().toLowerCase();
     const maxResults = $('#js-max-results').val();
     getYouTubeVideos(searchTerm, maxResults);
     getOpenLibraryBooks(searchTerm, maxResults);
