@@ -1,7 +1,7 @@
 'use strict';
 
 // put your own value below!
-const apiKey = 'AIzaSyCB33rxdzrwXbZr1jCEn5GOyQQu4h0kUIs'; 
+const apiKey = 'AIzaSyDrR9FT_TwhuwtPXO-IFlzP_G7UdA4LgZM'; 
 const youTubeURL = 'https://www.googleapis.com/youtube/v3/search';
 const youTubeWatch = 'https://www.youtube.com/watch';
 const libraryURL = 'https://openlibrary.org/subjects/';
@@ -34,7 +34,9 @@ function displayYouTubeResults(responseJson) {
     $('#y-results-list').append(
         `<div class="card" onclick="clickHandler('${cUrl}')">
             <img src='${responseJson.items[i].snippet.thumbnails.medium.url}'>
-            <h3>${responseJson.items[i].snippet.title}</h3>
+            <div class="cont">
+            <h4>${responseJson.items[i].snippet.title}</h4>
+            </div>
         </div>`
     )};
   //display the results section  
@@ -51,8 +53,10 @@ function displayLibraryResults(responseJson) {
     //   it will display the cover and title with links
     $('#l-results-list').append(
         `<div class="card" onclick="clickHandler('http://openlibrary.org${responseJson.works[i].key}')">
-            <img src="${coverImgURL}${responseJson.works[i].cover_id}-S.jpg">
-            <h3>${responseJson.works[i].title}</h3>
+            <img src="${coverImgURL}${responseJson.works[i].cover_id}-L.jpg">
+            <div class="cont">
+            <h4>${responseJson.works[i].title}</h4>
+            </div>
         </div>`
       )};
     //display the results section  

@@ -1,9 +1,17 @@
 * {
     box-sizing: border-box;
   }
-  
+  main{
+      
+  }
   body {
     font-family: 'Roboto', sans-serif;
+    background-image: url(images/background.jpg);
+    background-repeat: repeat;
+    min-height: 100%;
+    background-size: cover;
+    color: aliceblue;
+    /* background-position: center center; */
     /* background-color: #007DFA; */
   }
   
@@ -14,10 +22,16 @@
   button:hover {
     cursor: pointer;
   }
+
+  h1, h4 {
+      text-align: center;
+      
+  }
   
   .container {
-    max-width: 600px;
-    margin: 0 auto;
+    width: 100%;
+    display: block;
+    margin: auto;
   }
   
   .error-message {
@@ -32,23 +46,82 @@
       text-decoration: none;
   }
 
-  #l-results-list, #y-results-list {
-    list-style-type: none;
-  }
-
   .align1{
     padding-right: 80px;
+    padding-left: 20px;
   }
 
   .align2{
-    padding-right: 41px;
+    padding-right: 46px;
+    padding-left: 20px;
   }
 
   #js-search-term, #js-max-results {
       width: 143px;
       margin: 10px;
   }
+  .card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+    transition: 0.3s;
+    border-radius: 5px;
+    background-color: rgba(118, 148, 187, 0.6);
+    opacity: 0.8;
+    margin: 15px;
+  }
   
-  /* .button {
-      align-self: center;
-  } */
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.7);
+    opacity: 1;
+  }
+  
+  /* Add some padding inside the card container */
+  .cont {
+    padding: 2px 16px;
+  }
+
+  .sect, .top{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+    transition: 0.3s;
+    background-color: rgba(133, 137, 140, 0.9);
+    border-radius: 5px;
+  }
+
+  img {
+      width: 80%;
+      display: block;
+      margin: auto;
+      padding-top: 5%;
+  }
+
+  .button{
+    display: block;
+    margin: auto;
+  }
+  
+  @media all and (max-width: 800px) {
+    /* #results, #y-results{
+       flex-direction: row;
+     } */
+   
+     .sect, #js-form{
+        display: flex; 
+        flex-direction: column; 
+     }
+ }
+
+  @media all and (min-width: 800px) {
+     /* #results, #y-results{
+        flex-direction: row;
+      } */
+    
+      .sect, #js-form{
+        display: flex;
+        flex-direction: row;
+      }
+
+      section{
+          text-align: center;
+      }
+  }

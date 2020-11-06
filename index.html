@@ -4,34 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Topic to Lear Finder</title>
+    <title>Topic to Learn Finder</title>
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Topic to Learn Finder: Books and Videos</h1>
+        <div class="top">
+            <h1>Topic to Learn Finder:<br>Books and Videos</h1>
+        
+            <form id="js-form">
+                <div>
+                    <label for="js-search-term" class="align1">Topic Search</label>
+                    <input type="text" name="search-term" id="js-search-term" required>
+                    <br>
+                    <label for="js-max-results" class="align2">Number of results</label>
+                    <input type="number" name="max-results" id="js-max-results" value="10">
+                </div>
+                <div class="button">
+                    <input type="submit" value="Go!" class="button">
+                </div>
+            </form>
 
-        <form id="js-form">
-            <label for="js-search-term" class="align1">Search term</label>
-            <input type="text" name="search-term" id="js-search-term" required>
-            <br>
-            <label for="js-max-results" class="align2">Number of results</label>
-            <input type="number" name="max-results" id="js-max-results" value="10">
-            <br>
-            <input type="submit" value="Go!" class="button">
-        </form>
-
-        <p id="js-error-message" class="error-message"></p>
-
-        <div class="column">
+            <p id="js-error-message" class="error-message"></p>
+        </div>
+        <div class="sect">
             <section id="results" class="hidden">
-                <h2>Library results</h2>
+                <h2>Books</h2>
                 <div id="l-results-list">
                 </div>
             </section>
             <section id="y-results" class="hidden">
-                <h2>Youtube results</h2>
+                <h2>Video</h2>
                 <div id="y-results-list">
                 </div>
             </section>
