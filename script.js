@@ -32,7 +32,7 @@ function displayYouTubeResults(responseJson) {
     const cUrl = youTubeWatch + '?' + queryString;
 
     $('#y-results-list').append(
-        `<div class="card" onclick="clickHandler(${cUrl})">
+        `<div class="card" onclick="clickHandler('${cUrl}')">
             <img src='${responseJson.items[i].snippet.thumbnails.medium.url}'>
             <h3>${responseJson.items[i].snippet.title}</h3>
         </div>`
