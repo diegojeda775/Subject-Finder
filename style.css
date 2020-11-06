@@ -84,11 +84,11 @@
   .sect, .top{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     transition: 0.3s;
-    background-color: rgba(133, 137, 140, 0.9);
+    background-color: rgba(133, 137, 140, 0.8);
     border-radius: 5px;
   }
 
-  img {
+  img, .lab {
       width: 80%;
       display: block;
       margin: auto;
