@@ -1,7 +1,7 @@
 'use strict';
 
 // put your own value below!
-const apiKey = 'AIzaSyBvUFAxtS34BpnhQQ1Wp1p_X3rOET4Dq_8'; 
+const apiKey = 'AIzaSyCB33rxdzrwXbZr1jCEn5GOyQQu4h0kUIs'; 
 const youTubeURL = 'https://www.googleapis.com/youtube/v3/search';
 const youTubeWatch = 'https://www.youtube.com/watch';
 const libraryURL = 'https://openlibrary.org/subjects/';
