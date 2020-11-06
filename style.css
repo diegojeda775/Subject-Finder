@@ -4,6 +4,7 @@
   
   body {
     font-family: 'Roboto', sans-serif;
+    /* background-color: #007DFA; */
   }
   
   button, input[type="text"] {
@@ -26,3 +27,28 @@
   .hidden {
     display: none;
   }
+
+  a {
+      text-decoration: none;
+  }
+
+  #l-results-list, #y-results-list {
+    list-style-type: none;
+  }
+
+  .align1{
+    padding-right: 80px;
+  }
+
+  .align2{
+    padding-right: 41px;
+  }
+
+  #js-search-term, #js-max-results {
+      width: 143px;
+      margin: 10px;
+  }
+  
+  /* .button {
+      align-self: center;
+  } */

@@ -32,10 +32,10 @@ function displayYouTubeResults(responseJson) {
     const cUrl = youTubeWatch + '?' + queryString;
 
     $('#y-results-list').append(
-      `<li><h3><a href="${cUrl}" target=”_blank”>${responseJson.items[i].snippet.title}</a></h3>
-      <p>${responseJson.items[i].snippet.description}</p>
-      <h3><a href="${cUrl}" target=”_blank”><img src='${responseJson.items[i].snippet.thumbnails.medium.url}'></a>
-      </li>`
+        `<div class="card" onclick="clickHandler(${cURL})">
+            <img src='${responseJson.items[i].snippet.thumbnails.medium.url}'>
+            <h3>${responseJson.items[i].snippet.title}</h3>
+        </div>`
     )};
   //display the results section  
   $('#y-results').removeClass('hidden');
@@ -49,12 +49,11 @@ function displayLibraryResults(responseJson) {
     for (let i = 0; i < responseJson.works.length; i++){
     //   for each book in the array,
     //   it will display the cover and title with links
-      $('#l-results-list').append(
-        `<li>
-        <a href="http://openlibrary.org${responseJson.works[i].key}" target=”_blank”><img src="${coverImgURL}${responseJson.works[i].cover_id}-S.jpg"></a>
-        <a href="http://openlibrary.org${responseJson.works[i].key}" target=”_blank”><h3>${responseJson.works[i].title}</h3></a>
-    
-        </li>`
+    $('#l-results-list').append(
+        `<div class="card" onclick="clickHandler('http://openlibrary.org${responseJson.works[i].key}')">
+            <img src="${coverImgURL}${responseJson.works[i].cover_id}-S.jpg">
+            <h3>${responseJson.works[i].title}</h3>
+        </div>`
       )};
     //display the results section  
     $('#results').removeClass('hidden');
@@ -110,7 +109,11 @@ function getOpenLibraryBooks(query, maxResults=10) {
       .catch(err => {
         $('#js-error-message').text(`Something went wrong: ${err.message}`);
       });
-  }
+}
+
+function clickHandler (url){
+    window.open(url, "_blank");
+}
 
 function watchForm() {
   $('form').submit(event => {
