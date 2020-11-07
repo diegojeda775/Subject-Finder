@@ -1,19 +1,15 @@
 * {
     box-sizing: border-box;
   }
-  main{
-      
-  }
-  body {
+
+body {
     font-family: 'Roboto', sans-serif;
     background-image: url(images/background.jpg);
     background-repeat: repeat;
     min-height: 100%;
     background-size: cover;
     color: aliceblue;
-    /* background-position: center center; */
-    /* background-color: #007DFA; */
-  }
+}
   
   button, input[type="text"] {
     padding: 5px; 
@@ -99,6 +95,7 @@
     display: block;
     margin: 1px;
     padding-bottom: 3%;
+    align-items: center;
 }
 
   .button{
@@ -106,9 +103,13 @@
     width: 80%;
     margin: auto;
     margin-bottom: 3%;
-  }
+}
+
+.bot {
+    align-items: center;
+}
   
-  @media all and (max-width: 1200px) {
+  @media all and (max-width: 800px) {
     .align1{
         padding-right: 80px;
         padding-left: 20px;
@@ -125,10 +126,8 @@
      }
  }
 
-  @media all and (min-width: 1200px) {
-     /* #results, #y-results{
-        flex-direction: row;
-      } */
+  @media all and (min-width: 800px) {
+    
       .lab {
         width: 50%;
         padding-left: 10%;

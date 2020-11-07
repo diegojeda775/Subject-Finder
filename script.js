@@ -1,6 +1,7 @@
 'use strict';
 
-// put your own value below!
+// API key 
+// regular wesites roots
 const apiKey = 'AIzaSyDrR9FT_TwhuwtPXO-IFlzP_G7UdA4LgZM'; 
 const youTubeURL = 'https://www.googleapis.com/youtube/v3/search';
 const youTubeWatch = 'https://www.youtube.com/watch';
@@ -22,8 +23,9 @@ function displayYouTubeResults(responseJson) {
   for (let i = 0; i < responseJson.items.length; i++){
     // for each video object in the items 
     //array, add a list item to the results 
-    //list with the video title, description,
+    //list with the video title, 
     //and thumbnail
+    // making the video url from the video id and channel title
     const params = {
         v: responseJson.items[i].id.videoId,
         ab_channel: responseJson.items[i].snippet.channelTitle.replace(/\s/g, ''),
@@ -64,6 +66,7 @@ function displayLibraryResults(responseJson) {
   };
 
 function getYouTubeVideos(query, maxResults=10) {
+
   const params = {
     key: apiKey,
     q: query,
@@ -71,6 +74,7 @@ function getYouTubeVideos(query, maxResults=10) {
     maxResults,
     type: 'video'
   };
+
   const queryString = formatQueryParams(params)
   const yUrl = youTubeURL + '?' + queryString;
 
@@ -90,13 +94,13 @@ function getYouTubeVideos(query, maxResults=10) {
 }
 
 function getOpenLibraryBooks(query, maxResults=10) {
+
     const params = {
-      //key: apiKey,
-    //   q: query,
       mode: 'ebooks',
       limit: maxResults,
       has_fulltext: 'true'
     };
+
     const queryString = formatQueryParams(params)
     const lUrl = libraryURL + `${query}.json` + '?' + queryString;
   
@@ -114,7 +118,7 @@ function getOpenLibraryBooks(query, maxResults=10) {
         $('#js-error-message').text(`Something went wrong: ${err.message}`);
       });
 }
-
+// click on cards to got to the item's url
 function clickHandler (url){
     window.open(url, "_blank");
 }
