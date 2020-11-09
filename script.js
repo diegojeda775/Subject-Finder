@@ -32,12 +32,12 @@ function displayYouTubeResults(responseJson) {
       };
     const queryString = formatQueryParams(params)
     const cUrl = youTubeWatch + '?' + queryString;
-
+  
     $('#y-results-list').append(
         `<div class="card" onclick="clickHandler('${cUrl}')">
             <img src='${responseJson.items[i].snippet.thumbnails.medium.url}'>
             <div class="cont">
-            <h4>${responseJson.items[i].snippet.title}</h4>
+              <h4>${responseJson.items[i].snippet.title}</h4>
             </div>
         </div>`
     )};
@@ -49,11 +49,19 @@ function displayLibraryResults(responseJson) {
     // if there are previous results, remove them
     console.log(responseJson);
     $('#l-results-list').empty();
+
+    if(responseJson.ebook_count === 0){
+      $('#l-results-list').html(
+        `<div>
+          <h3>There are no results.</h3>
+        </div>`
+      )} else {
+
     // iterate through the items array
     for (let i = 0; i < responseJson.works.length; i++){
     //   for each book in the array,
     //   it will display the cover and title with links
-    $('#l-results-list').append(
+      $('#l-results-list').append(
         `<div class="card" onclick="clickHandler('http://openlibrary.org${responseJson.works[i].key}')">
             <img src="${coverImgURL}${responseJson.works[i].cover_id}-L.jpg">
             <div class="cont">
@@ -61,6 +69,9 @@ function displayLibraryResults(responseJson) {
             </div>
         </div>`
       )};
+      
+    } 
+
     //display the results section  
     $('#results').removeClass('hidden');
   };
