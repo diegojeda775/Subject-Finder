@@ -5,7 +5,7 @@
 const apiKey = 'AIzaSyDrR9FT_TwhuwtPXO-IFlzP_G7UdA4LgZM'; 
 const youTubeURL = 'https://www.googleapis.com/youtube/v3/search';
 const youTubeWatch = 'https://www.youtube.com/watch';
-const libraryURL = 'https://openlibrary.org/subjects/';
+const libraryURL = 'https://openlibrary.org/search.json';
 const coverImgURL = 'https://covers.openlibrary.org/b/id/';
 
 
@@ -50,22 +50,22 @@ function displayLibraryResults(responseJson) {
     console.log(responseJson);
     $('#l-results-list').empty();
 
+    // return no results if not results were fetched
     if(responseJson.ebook_count === 0){
       $('#l-results-list').html(
         `<div>
           <h3>There are no results.</h3>
         </div>`
       )} else {
-
     // iterate through the items array
-    for (let i = 0; i < responseJson.works.length; i++){
+    for (let i = 0; i < responseJson.docs.length; i++){
     //   for each book in the array,
     //   it will display the cover and title with links
       $('#l-results-list').append(
-        `<div class="card" onclick="clickHandler('http://openlibrary.org${responseJson.works[i].key}')">
-            <img src="${coverImgURL}${responseJson.works[i].cover_id}-L.jpg">
+        `<div class="card" onclick="clickHandler('http://openlibrary.org${responseJson.docs[i].key}')">
+            <img src="${coverImgURL}${responseJson.docs[i].cover_i}-L.jpg">
             <div class="cont">
-            <h4>${responseJson.works[i].title}</h4>
+            <h4>${responseJson.docs[i].title}</h4>
             </div>
         </div>`
       )};
@@ -109,11 +109,13 @@ function getOpenLibraryBooks(query, maxResults=10) {
     const params = {
       mode: 'ebooks',
       limit: maxResults,
-      has_fulltext: 'true'
+      has_fulltext: 'true',
+      q: query,
+      format: 'json'
     };
 
     const queryString = formatQueryParams(params)
-    const lUrl = libraryURL + `${query}.json` + '?' + queryString;
+    const lUrl = libraryURL + '?' + queryString;
   
     console.log(lUrl);
   
