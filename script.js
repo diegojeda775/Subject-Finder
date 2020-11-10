@@ -50,13 +50,6 @@ function displayLibraryResults(responseJson) {
     console.log(responseJson);
     $('#l-results-list').empty();
 
-    // return no results if not results were fetched
-    if(responseJson.ebook_count === 0){
-      $('#l-results-list').html(
-        `<div>
-          <h3>There are no results.</h3>
-        </div>`
-      )} else {
     // iterate through the items array
     for (let i = 0; i < responseJson.docs.length; i++){
     //   for each book in the array,
@@ -69,9 +62,7 @@ function displayLibraryResults(responseJson) {
             </div>
         </div>`
       )};
-      
-    } 
-
+       
     //display the results section  
     $('#results').removeClass('hidden');
   };
