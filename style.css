@@ -25,7 +25,8 @@ body {
   
   .container {
     width: 100%;
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: auto;
   }
   
@@ -39,16 +40,6 @@ body {
 
   a {
       text-decoration: none;
-  }
-
-  .align1{
-    padding-right: 80px;
-    padding-left: 20px;
-  }
-
-  .align2{
-    padding-right: 46px;
-    padding-left: 20px;
   }
 
   #js-search-term, #js-max-results {
@@ -90,14 +81,6 @@ body {
       padding-top: 5%;
   }
 
-  .lab {
-    width: 100%;
-    display: block;
-    margin: 1px;
-    padding-bottom: 3%;
-    align-items: center;
-}
-
   .button{
     display: block;
     width: 80%;
@@ -109,8 +92,8 @@ body {
     align-items: center;
 }
   
-  @media all and (max-width: 800px) {
-    .align1{
+  @media all and (min-width: 320px) {
+    /* .align1{
         padding-right: 80px;
         padding-left: 20px;
       }
@@ -118,12 +101,27 @@ body {
       .align2{
         padding-right: 46px;
         padding-left: 20px;
-      }
+      } */
    
-     .sect, #js-form{
+     /* .sect, #js-form{
         display: flex; 
         flex-direction: column; 
-     }
+     } */
+
+     .lab {
+      width: 100%;
+      margin: 1px;
+      padding-bottom: 3%;
+      justify-content: center;
+  }
+
+    .in{
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+    }
+  
  }
 
   @media all and (min-width: 800px) {
