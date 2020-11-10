@@ -2,7 +2,7 @@
 
 // API key 
 // regular wesites roots
-const apiKey = 'AIzaSyB-aiYrj7MtMAQ12M-A3pMXPyBrc0sl__8'; 
+const apiKey = 'AIzaSyDmyyOQamYuxR_IY64f4PSaBRyvzNRlbQo'; 
 const youTubeURL = 'https://www.googleapis.com/youtube/v3/search';
 const youTubeWatch = 'https://www.youtube.com/watch';
 const libraryURL = 'https://openlibrary.org/search.json';
