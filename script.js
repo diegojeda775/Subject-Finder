@@ -2,11 +2,14 @@
 
 // API key 
 // regular wesites roots
-const apiKey = 'AIzaSyDmyyOQamYuxR_IY64f4PSaBRyvzNRlbQo'; 
-const youTubeURL = 'https://www.googleapis.com/youtube/v3/search';
-const youTubeWatch = 'https://www.youtube.com/watch';
-const libraryURL = 'https://openlibrary.org/search.json';
-const coverImgURL = 'https://covers.openlibrary.org/b/id/';
+const MyApp = {
+  apiKey: 'AIzaSyCZaAzP9MEuYT8KcukewMtHENFoJsmd8XA', 
+  youTubeURL: 'https://www.googleapis.com/youtube/v3/search',
+  youTubeWatch: 'https://www.youtube.com/watch',
+  libraryURL: 'https://openlibrary.org/search.json',
+  coverImgURL: 'https://covers.openlibrary.org/b/id/'
+}
+
 
 
 function formatQueryParams(params) {
@@ -17,8 +20,13 @@ function formatQueryParams(params) {
 
 function displayYouTubeResults(responseJson) {
   // if there are previous results, remove them
-  console.log(responseJson);
   $('#y-results-list').empty();
+
+  if(responseJson.pageInfo.totalResults === 0){
+    $('#y-results-list').html(
+      '<h3> No Results found</h3>'
+    )
+  }else {
   // iterate through the items array
   for (let i = 0; i < responseJson.items.length; i++){
     // for each video object in the items 
@@ -31,7 +39,7 @@ function displayYouTubeResults(responseJson) {
         ab_channel: responseJson.items[i].snippet.channelTitle.replace(/\s/g, ''),
       };
     const queryString = formatQueryParams(params)
-    const cUrl = youTubeWatch + '?' + queryString;
+    const cUrl = MyApp.youTubeWatch + '?' + queryString;
   
     $('#y-results-list').append(
         `<div class="card" onclick="clickHandler('${cUrl}')">
@@ -41,28 +49,40 @@ function displayYouTubeResults(responseJson) {
             </div>
         </div>`
     )};
+  }
   //display the results section  
   $('#y-results').removeClass('hidden');
 };
 
 function displayLibraryResults(responseJson) {
     // if there are previous results, remove them
-    console.log(responseJson);
     $('#l-results-list').empty();
 
-    // iterate through the items array
-    for (let i = 0; i < responseJson.docs.length; i++){
-    //   for each book in the array,
-    //   it will display the cover and title with links
+    if(responseJson.numFound === 0){
+      $('#l-results-list').html(
+        '<h3> No Results found</h3>'
+      )
+    }else {
+      // iterate through the items array
+      for (let i = 0; i < responseJson.docs.length; i++){
+      //   for each book in the array,
+      //   it will display the cover and title with links
+      let imgUrl = "";
+      if(!responseJson.docs[i].cover_i || responseJson.docs[i].cover_i == -1){
+        imgUrl = "images/no-image.png";
+      }else {
+        imgUrl = `${MyApp.coverImgURL}${responseJson.docs[i].cover_i}-L.jpg`;
+      }
+
       $('#l-results-list').append(
         `<div class="card" onclick="clickHandler('http://openlibrary.org${responseJson.docs[i].key}')">
-            <img src="${coverImgURL}${responseJson.docs[i].cover_i}-L.jpg">
+            <img src=${imgUrl}>
             <div class="cont">
             <h4>${responseJson.docs[i].title}</h4>
             </div>
         </div>`
       )};
-       
+    }  
     //display the results section  
     $('#results').removeClass('hidden');
   };
@@ -70,7 +90,7 @@ function displayLibraryResults(responseJson) {
 function getYouTubeVideos(query, maxResults=10) {
 
   const params = {
-    key: apiKey,
+    key: MyApp.apiKey,
     q: query,
     part: 'snippet',
     maxResults,
@@ -78,7 +98,7 @@ function getYouTubeVideos(query, maxResults=10) {
   };
 
   const queryString = formatQueryParams(params)
-  const yUrl = youTubeURL + '?' + queryString;
+  const yUrl = MyApp.youTubeURL + '?' + queryString;
 
   console.log(yUrl);
 
@@ -106,7 +126,7 @@ function getOpenLibraryBooks(query, maxResults=10) {
     };
 
     const queryString = formatQueryParams(params)
-    const lUrl = libraryURL + '?' + queryString;
+    const lUrl = MyApp.libraryURL + '?' + queryString;
   
     console.log(lUrl);
   
